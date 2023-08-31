@@ -22,4 +22,14 @@ class PostController extends Controller
             ]
         );
     }
+
+    public function show(string $id){
+
+        $post = Post::with('type', 'technologies' )->findOrFail($id);
+
+        return response()->json([
+            'success'=>true,
+            'result'=>$post,
+        ]);
+    }
 }
